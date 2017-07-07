@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class AnnonceRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getAllAnnonces(){
+        $qb = $this->createQueryBuilder('a')
+            ->select('a');
+
+        return $qb->getQuery();
+
+    }
 }
