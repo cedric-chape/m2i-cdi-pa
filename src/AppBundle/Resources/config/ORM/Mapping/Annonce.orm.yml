@@ -1,0 +1,40 @@
+Annonce:
+    type: entity
+    table: annonce
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: false
+            length: null
+            options:
+                fixed: false
+        date:
+            type: datetime
+            nullable: false
+        codepostal:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: codePostal
+        price:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+    lifecycleCallbacks: {  }
