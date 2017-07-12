@@ -1,6 +1,8 @@
 <?php
 
 namespace AppBundle\Repository;
+use AppBundle\AppBundle;
+use AppBundle\Entity\Annonce;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -11,11 +13,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class AnnonceRepository extends EntityRepository
 {
-    public function getAllAnnonces(){
+    public function getAllAnnoncesByFilter($codePostal, $priceMin, $priceMax){
         $qb = $this->createQueryBuilder('a')
-            ->select('a');
+            ->select('a')
+            ->from ('AppBundle:Annonce', 'a')
+            ->where('a.price>:priceMin')
+            ->andWhere('a.price<:priceMax')
+            ->andWhere('a.codePostal=:codePostal');
+        $query = $qb->getQuery();
+        $query->setParameter('codePostal',$codePostal);
+        $query->setParameter('priceMin',$priceMin);
+        $query->setParameter('priceMax',$priceMax);
 
-        return $qb->getQuery();
+        return $query;
 
     }
 }
