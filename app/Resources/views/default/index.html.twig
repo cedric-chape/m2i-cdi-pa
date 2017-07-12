@@ -1,7 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>Voici les dernières petites annonces immobilières</h2>
 
+
+    <h2>Toutes les dernières petites annonces immobilières :</h2>
+    <ul class="list-group">
+        {% for annonce in annonceList %}
+            <div class="list-group">
+
+                <a href="#" class="list-group-item">
+                    <h3 class="list-group-item-heading">{{ annonce.title }}</h3>
+                    <p class="list-group-item-text">Description : {{ annonce.description }}</p>
+                    <p>Code Postal : {{ annonce.codePostal }}</p>
+                    <p><strong>Prix: {{ annonce.price }} €</strong></p>
+                    <p><em>Annonce n°{{ annonce.id }} créée le {{ annonce.date | date('d/m/Y') }}</em></p>
+                </a>
+
+            </div>
+        {% endfor %}
+    </ul>
 
 {% endblock %}

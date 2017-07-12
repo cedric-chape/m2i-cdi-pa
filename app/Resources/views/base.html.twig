@@ -12,7 +12,8 @@
             }
 
             body{
-                background-color: hsl(45, 19%, 82%);
+
+                background-color: Highlight;
             }
 
             footer{
@@ -35,10 +36,17 @@
     <div class="col-md-10 col-md-offset-1">
         <header>
             {% block header %}
-                <h1>Bienvenue sur PA-Immo !</h1>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <h1>Bienvenue sur PA-Immo !</h1>
+                        </div>
+                    </div>
+                </div>
+
             {% endblock %}
         </header>
-        <section class="col-md-8">
+        <section class="col-md-6 col-md-offset-3">
             {% block body %}{% endblock %}
         </section>
         <aside class="col-md-4">

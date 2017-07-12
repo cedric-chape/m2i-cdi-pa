@@ -16,24 +16,15 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
-    }
-
-    /**
-     * @Route("/", name="homepage")
-     */
-    public function listAction(){
-        $annonceRepo = $this->getDoctrine()->getRepository("Annonce");
-        $annonceList = $annonceRepo->getAllAnnonces()->getArrayResult();
+        $annonceRepo = $this->getDoctrine()->getRepository("AppBundle\Entity\Annonce");
+        $annonceList = $annonceRepo->findAll();
 
         return $this->render(
             'default/index.html.twig', array(
                 "annonceList"=> $annonceList
             )
         );
-
     }
+
+
 }
